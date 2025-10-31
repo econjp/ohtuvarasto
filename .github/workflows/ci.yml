@@ -26,10 +26,13 @@ jobs:
 
       - name: Run tests
         run: poetry run coverage run --branch -m pytest
-      - name: Coverage report
+
+      - name: Generate coverage XML
         run: poetry run coverage xml
 
-      - name: Coverage report to Codecov
-        uses: codecov/codecov-action@v4
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          fail_ci_if_error: true
