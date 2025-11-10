@@ -29,13 +29,12 @@ def show_error_cases() -> None:
     print("Varasto(-100.0);")
     huono = Varasto(-100.0)
     print(huono)
-
     print("Varasto(100.0, -50.7)")
     huono = Varasto(100.0, -50.7)
     print(huono)
 
 
-def overflow_demos(mehua: Varasto, olutta: Varasto) -> None:
+def overflow_adds(mehua: Varasto, olutta: Varasto) -> None:
     print(f"Olutvarasto: {olutta}")
     print("olutta.lisaa_varastoon(1000.0)")
     olutta.lisaa_varastoon(1000.0)
@@ -46,6 +45,8 @@ def overflow_demos(mehua: Varasto, olutta: Varasto) -> None:
     mehua.lisaa_varastoon(-666.0)
     print(f"Mehuvarasto: {mehua}")
 
+
+def overflow_takes(mehua: Varasto, olutta: Varasto) -> None:
     print(f"Olutvarasto: {olutta}")
     print("olutta.ota_varastosta(1000.0)")
     saatiin = olutta.ota_varastosta(1000.0)
@@ -67,7 +68,8 @@ def main() -> None:
     show_olut_getters(olutta)
     do_mehu_setters(mehua)
     show_error_cases()
-    overflow_demos(mehua, olutta)
+    overflow_adds(mehua, olutta)
+    overflow_takes(mehua, olutta)
 
 
 if __name__ == "__main__":
